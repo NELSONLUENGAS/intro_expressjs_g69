@@ -1,0 +1,12 @@
+[
+   {
+      "id": 1,
+      "name": "Pepe",
+      "team": "Node & express"
+   },
+   {
+      "id": 2,
+      "name": "Paquita",
+      "team": "React & Tailwind"
+   }
+]
