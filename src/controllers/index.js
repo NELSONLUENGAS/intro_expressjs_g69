@@ -1,42 +1,28 @@
-const { readFileSync, writeFileSync } = require('fs')
+const Viajes = require('../models/Viajes')
 
-const handleGetName = (req, res) => {
-    res.send('Nelson Luengas')
+const handleCreateTrip = async (req, res) => {
+
+    const { destino, presupuesto } = req.body
+
+    const response = await Viajes.crear(destino, presupuesto)
+
+    res.json({
+        msg: "Viaje creado con éxito!",
+        data: response
+    })
 }
 
+const handleGetTrips = async (req, res) => {
 
-const handleGetProducts = (req, res) => {
+    const response = await Viajes.ver()
 
-    const productos = JSON.parse(readFileSync("productos.json"))
-    res.json(productos)
-}
-
-const handleCreateProduct = (req, res) => {
-
-    const producto = req.body
-
-    const productos = JSON.parse(readFileSync("productos.json"))
-
-    productos.push(producto)
-    writeFileSync("productos.json", JSON.stringify(productos, null, 3))
-
-    res.send("Producto agregado con éxito!")
-}
-
-const handleCreateUsuario = (req, res) => {
-
-    const usuario = req.body
-    const usuarios = JSON.parse(readFileSync("usuarios.json"))
-
-    usuarios.push(usuario)
-    writeFileSync("usuarios.json", JSON.stringify(usuarios, null, 3))
-
-    res.send("Usuario agregado con éxito!")
+    res.json({
+        msg: "Lista de viajes",
+        data: response
+    })
 }
 
 module.exports = {
-    handleGetName,
-    handleGetProducts,
-    handleCreateProduct,
-    handleCreateUsuario
+    handleCreateTrip,
+    handleGetTrips
 }
