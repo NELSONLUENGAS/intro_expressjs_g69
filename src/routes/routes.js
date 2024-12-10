@@ -1,12 +1,12 @@
-const { Router } = require('express')
-const { handleCreateTrip, handleGetTrips, handleUpdateTrip, handleDeleteTrip } = require('../controllers/index')
+const express = require('express')
+const medicamentosRoutes = require('./medicamentos.routes')
+const viajesRoutes = require('./viajes.routes')
+const personalRoutes = require('./personal.routes')
 
-const router = Router()
+const app = express()
 
-router.post("/viajes", handleCreateTrip)
-router.get("/viajes", handleGetTrips)
+app.use('/medicamentos', medicamentosRoutes)
+app.use('/viajes', viajesRoutes)
+app.use('/personal', personalRoutes)
 
-router.put("/viajes/:id", handleUpdateTrip)
-router.delete("/viajes/:id", handleDeleteTrip)
-
-module.exports = router;
+module.exports = app;
