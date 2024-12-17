@@ -10,5 +10,11 @@ module.exports = {
         statusCode: 500,
         message: 'Error interno en el servidor. Pruba más tarde',
         description: 'Error inesperado en el servidor',
+    },
+    USER_NOT_FOUND: {
+        id: 'userNotFound',
+        statusCode: 404,
+        message: 'Usuario no encontrado',
+        description: 'El usuario no existe en el sistema',
     }
 }
